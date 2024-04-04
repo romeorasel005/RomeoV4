@@ -1,7 +1,7 @@
 module.exports = {
       config: {
          name: 'ping',
-        aliases: ["p"],
+        aliases: [`p`],
          author: 'UPoL',
          role: 0,
          version: '2.9',
