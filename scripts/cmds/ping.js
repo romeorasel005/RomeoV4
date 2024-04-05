@@ -1,19 +1,19 @@
 module.exports = {
       config: {
-         name: 'ping',
-        aliases: [`p`],
-         author: 'UPoL',
+         name: "ping",
+         aliases: ["p"],
+         author: "UPoL",
          role: 0,
-         version: '2.9',
-         shortDescription: 'Check ping status',
-         longDescription: 'Check net speed',
+         version: "2.9",
+         shortDescription: "Check ping status",
+         longDescription: "Check net speed",
          guide: {
-            en: '{pn}'
+            en: "{pn}"
         }
    },
    onStart: async function ({ api, event, message }) {
          const timeStart = Date.now();
-         await message.reply("loding the net speed browser..");
+         await message.reply("💬 𝗖𝗛𝗘𝗖𝗞𝗜𝗡𝗚 𝗣𝗜𝗡𝗚...");
          const ping = Date.now() - timeStart;
          let pingStatus = " 🟢 | Very Good ";
     if (ping > 200) {
@@ -40,6 +40,6 @@ module.exports = {
     if (ping > 2000) {
       pingStatus = " 💀 | Fully Dead.";
     }
-         message.reply(`😊 Your browser ping :${ping}ms.\nStatus: ${pingStatus}`);
+         message.reply(` ———|PING STATUS|———\n📝 The current ping is :${ping}ms.\nStatus: ${pingStatus}`);
        } 
   };
