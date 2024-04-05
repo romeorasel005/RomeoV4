@@ -1,20 +1,25 @@
 module.exports = {
-      config: {
-         name: "ping",
-         aliases: ["p"],
-         author: "UPoL",
-         role: 0,
-         version: "2.9",
-         shortDescription: "Check ping status",
-         longDescription: "Check net speed",
-         guide: {
-            en: "{pn}"
-        }
-   },
-   onStart: async function ({ api, event, message }) {
-         const timeStart = Date.now();
-         await message.reply("💬 𝗖𝗛𝗘𝗖𝗞𝗜𝗡𝗚 𝗣𝗜𝗡𝗚...");
-         const ping = Date.now() - timeStart;
+  config: {
+    name: "ping",
+    aliases: ["p"],
+    version: "1.0",
+    author: "Rômeo",//command modified by Aryan Chauhan don't change my author name
+    role: 0,
+    shortDescription: {
+      en: "Displays the current ping of the bot's system."
+    },
+    longDescription: {
+      en: "Displays the current ping of the bot's system."
+    },
+    category: "System",
+    guide: {
+      en: "Use {p}ping to check the current ping of the bot's system."
+    }
+  },
+  onStart: async function ({ api, event, args }) {
+    const timeStart = Date.now();
+    await api.sendMessage("📝 Checking Bot's ping. 💌 Please wait......", event.threadID);
+      const ping = Date.now() - timeStart;
          let pingStatus = " 🟢 | Very Good ";
     if (ping > 200) {
       pingStatus = " 🌸 | Good..";
@@ -40,6 +45,6 @@ module.exports = {
     if (ping > 2000) {
       pingStatus = " 💀 | Fully Dead.";
     }
-         message.reply(` ———|PING STATUS|———\n📝 The current ping is :${ping}ms.\nStatus: ${pingStatus}`);
-       } 
-  };
+    api.sendMessage(`💬 𝗕𝗢𝗧 𝗦𝗘𝗥𝗩𝗘𝗥 𝗣𝗜𝗡𝗚:\n┏━━━━━━━━━━━━❀\n📝 The current ping is 【 ${ping} MS 】\n✴️Status: ${pingStatus}\n┗━━━━━━━━━━━━❀`, event.threadID);
+  }
+};
